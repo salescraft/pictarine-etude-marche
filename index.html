@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pictarine - StratÃ©gie d'expansion internationale</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #00168E 0%, #1e3a8a 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .metric-card {
+            background: linear-gradient(135deg, #00168E 0%, #1e3a8a 100%);
+        }
+        .metric-card-2 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .metric-card-3 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        .metric-card-4 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        .chart-container {
+            height: 500px;
+            position: relative;
+        }
+        .tab-button.active {
+            border-color: #00168E !important;
+            color: #00168E !important;
+        }
+         {
+            .no-print { display: none; }
+            body { font-size: 12px; }
+            .chart-container { height: 400px; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-8 no-print">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-4xl font-bold mb-2">Pictarine</h1>
+                    <p class="text-xl opacity-90">StratÃ©gie d'expansion internationale</p>
+                    <p class="opacity-75 mt-2">Analyse stratÃ©gique â€¢ 25 marchÃ©s â€¢ Roadmap 2025-2027</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-3xl font-bold">â‚¬52M</div>
+                    <div class="text-sm opacity-75">Potentiel de revenus</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-6">
+            <div class="flex space-x-8">
+                <button onclick="showTab('dashboard')" class="tab-button active py-4 px-6 border-b-2" style="border-color: #00168E; color: #00168E;">
+                    <i class="fas fa-chart-line mr-2"></i>Dashboard exÃ©cutif
+                </button>
+                <button onclick="showTab('strategic')" class="tab-button py-4 px-6 text-gray-600 hover:text-blue-600">
+                    <i class="fas fa-crosshairs mr-2"></i>Analyse stratÃ©gique
+                </button>
+                <button onclick="showTab('competitive')" class="tab-button py-4 px-6 text-gray-600 hover:text-blue-600">
+                    <i class="fas fa-chess mr-2"></i>Paysage concurrentiel
+                </button>
+                <button onclick="showTab('financial')" class="tab-button py-4 px-6 text-gray-600 hover:text-blue-600">
+                    <i class="fas fa-euro-sign mr-2"></i>Projections financiÃ¨res
+                </button>
+                <button onclick="showTab('roadmap')" class="tab-button py-4 px-6 text-gray-600 hover:text-blue-600">
+                    <i class="fas fa-road mr-2"></i>Roadmap d'expansion
+                </button>
+                <button onclick="showTab('recommendations')" class="tab-button py-4 px-6 text-gray-600 hover:text-blue-600">
+                    <i class="fas fa-lightbulb mr-2"></i>Recommandations
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+        <!-- Dashboard ExÃ©cutif -->
+        <div id="dashboard" class="tab-content active">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Dashboard exÃ©cutif</h2>
+                <p class="text-gray-600 mb-6">Vue synthÃ©tique des opportunitÃ©s d'expansion internationale</p>
+            </div>
+
+            <!-- KPIs Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="metric-card rounded-lg p-6 text-white card-shadow">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-white opacity-75 text-sm">Pays analysÃ©s</p>
+                            <p class="text-3xl font-bold">25</p>
+                        </div>
+                        <i class="fas fa-globe-americas text-2xl opacity-75"></i>
+                    </div>
+                </div>
+                <div class="metric-card-2 rounded-lg p-6 text-white card-shadow">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-white opacity-75 text-sm">Pays prioritaires</p>
+                            <p class="text-3xl font-bold">10</p>
+                        </div>
+                        <i class="fas fa-star text-2xl opacity-75"></i>
+                    </div>
+                </div>
+                <div class="metric-card-3 rounded-lg p-6 text-white card-shadow">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-white opacity-75 text-sm">Potentiel de revenus</p>
+                            <p class="text-3xl font-bold">â‚¬52M</p>
+                        </div>
+                        <i class="fas fa-chart-line text-2xl opacity-75"></i>
+                    </div>
+                </div>
+                <div class="metric-card-4 rounded-lg p-6 text-white card-shadow">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-white opacity-75 text-sm">ROI moyen</p>
+                            <p class="text-3xl font-bold">247%</p>
+                        </div>
+                        <i class="fas fa-trending-up text-2xl opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Insights -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Top 5 marchÃ©s prioritaires</h3>
+                    <div class="chart-container" style="height: 400px;">
+                        <canvas id="top5Chart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">RÃ©partition par phase d'expansion</h3>
+                    <div class="chart-container" style="height: 400px;">
+                        <canvas id="phaseChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Executive Summary Table -->
+            <div class="bg-white rounded-lg p-6 card-shadow">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">RÃ©sumÃ© exÃ©cutif</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-3 font-semibold text-gray-800">MÃ©trique</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Valeur</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Commentaire</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700">
+                            <tr class="border-t">
+                                <td class="px-4 py-3">Pays prioritaires phase 1</td>
+                                <td class="px-4 py-3 font-semibold">5 pays</td>
+                                <td class="px-4 py-3">France, Canada, Australie, UK, Allemagne</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="px-4 py-3">Investissement total requis</td>
+                                <td class="px-4 py-3 font-semibold">â‚¬21.1M</td>
+                                <td class="px-4 py-3">Sur 3 ans (2025-2027)</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="px-4 py-3">OpportunitÃ©s concurrentielles</td>
+                                <td class="px-4 py-3 font-semibold">8 marchÃ©s</td>
+                                <td class="px-4 py-3">Faible concurrence, forte attractivitÃ©</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="px-4 py-3">Focus gÃ©ographique principal</td>
+                                <td class="px-4 py-3 font-semibold">Europe</td>
+                                <td class="px-4 py-3">60% des pays prioritaires</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="px-4 py-3">DÃ©lai moyen de rentabilitÃ©</td>
+                                <td class="px-4 py-3 font-semibold">18 mois</td>
+                                <td class="px-4 py-3">Pour les marchÃ©s prioritaires</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analyse StratÃ©gique -->
+        <div id="strategic" class="tab-content">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Analyse stratÃ©gique</h2>
+                <p class="text-gray-600 mb-6">Matrices de priorisation et scoring multidimensionnel</p>
+            </div>
+
+            <!-- Priority Matrix -->
+            <div class="bg-white rounded-lg p-6 card-shadow mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Matrice de priorisation - Market Size vs Product Market Fit</h3>
+                <div class="chart-container">
+                    <canvas id="priorityMatrix"></canvas>
+                </div>
+            </div>
+
+            <!-- Scoring Heatmap -->
+            <div class="bg-white rounded-lg p-6 card-shadow mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Heatmap des opportunitÃ©s par dimension</h3>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div class="text-center p-4 bg-blue-50 rounded-lg">
+                        <div class="text-2xl font-bold" style="color: #00168E;">Market Size</div>
+                        <div class="text-sm text-gray-600">Taille du marchÃ©</div>
+                    </div>
+                    <div class="text-center p-4 bg-green-50 rounded-lg">
+                        <div class="text-2xl font-bold text-green-600">PMF Score</div>
+                        <div class="text-sm text-gray-600">Product Market Fit</div>
+                    </div>
+                    <div class="text-center p-4 bg-yellow-50 rounded-lg">
+                        <div class="text-2xl font-bold text-yellow-600">Low Competition</div>
+                        <div class="text-sm text-gray-600">Faible concurrence</div>
+                    </div>
+                    <div class="text-center p-4 bg-purple-50 rounded-lg">
+                        <div class="text-2xl font-bold text-purple-600">Business Env.</div>
+                        <div class="text-sm text-gray-600">Environnement d'affaires</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="heatmapChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Country Rankings -->
+            <div class="bg-white rounded-lg p-6 card-shadow">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Top 15 pays - Scores stratÃ©giques</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Rang</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Pays</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Score composite</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Market Size</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">PMF Score</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Concurrence</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">PrioritÃ©</th>
+                            </tr>
+                        </thead>
+                        <tbody id="countryRankings" class="text-gray-700">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paysage Concurrentiel -->
+        <div id="competitive" class="tab-content">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Paysage concurrentiel</h2>
+                <p class="text-gray-600 mb-6">Analyse de la prÃ©sence concurrentielle et identification des gaps</p>
+            </div>
+
+            <!-- Competitive Overview -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">PrÃ©sence concurrentielle CEWE vs KODAK</h3>
+                    <div class="chart-container">
+                        <canvas id="competitiveScatter"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Distribution de l'intensitÃ© concurrentielle</h3>
+                    <div class="chart-container">
+                        <canvas id="competitionIntensity"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Competitive Markets -->
+            <div class="bg-white rounded-lg p-6 card-shadow mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Top 10 marchÃ©s - PrÃ©sence concurrentielle</h3>
+                <div class="chart-container">
+                    <canvas id="topCompetitiveMarkets"></canvas>
+                </div>
+            </div>
+
+            <!-- Competitive Opportunities -->
+            <div class="bg-white rounded-lg p-6 card-shadow">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">OpportunitÃ©s vs intensitÃ© concurrentielle</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2">
+                        <div class="chart-container">
+                            <canvas id="opportunityMatrix"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-green-50 rounded-lg border border-green-200">
+                                <h4 class="font-semibold text-green-800 mb-2">Zone premium</h4>
+                                <p class="text-green-700 text-sm">Haute attractivitÃ©, faible concurrence</p>
+                                <p class="text-green-600 text-xs mt-1">8 opportunitÃ©s identifiÃ©es</p>
+                            </div>
+                            <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                                <h4 class="font-semibold text-yellow-800 mb-2">Zone d'attention</h4>
+                                <p class="text-yellow-700 text-sm">AttractivitÃ© moyenne, concurrence modÃ©rÃ©e</p>
+                                <p class="text-yellow-600 text-xs mt-1">12 marchÃ©s Ã  surveiller</p>
+                            </div>
+                            <div class="p-4 bg-red-50 rounded-lg border border-red-200">
+                                <h4 class="font-semibold text-red-800 mb-2">Zone de combat</h4>
+                                <p class="text-red-700 text-sm">Forte concurrence Ã©tablie</p>
+                                <p class="text-red-600 text-xs mt-1">5 marchÃ©s difficiles</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projections FinanciÃ¨res -->
+        <div id="financial" class="tab-content">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Projections financiÃ¨res</h2>
+                <p class="text-gray-600 mb-6">Sizing des opportunitÃ©s et analyse ROI</p>
+            </div>
+
+            <!-- Financial KPIs -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white rounded-lg p-6 card-shadow text-center">
+                    <div class="text-3xl font-bold" style="color: #00168E;">â‚¬52.3M</div>
+                    <div class="text-gray-600 text-sm">Potentiel de revenus total</div>
+                    <div class="text-xs text-gray-500 mt-1">Estimation conservative</div>
+                </div>
+                <div class="bg-white rounded-lg p-6 card-shadow text-center">
+                    <div class="text-3xl font-bold text-green-600">â‚¬21.1M</div>
+                    <div class="text-gray-600 text-sm">Investissement total requis</div>
+                    <div class="text-xs text-gray-500 mt-1">Sur 3 ans</div>
+                </div>
+                <div class="bg-white rounded-lg p-6 card-shadow text-center">
+                    <div class="text-3xl font-bold text-purple-600">247%</div>
+                    <div class="text-gray-600 text-sm">ROI moyen attendu</div>
+                    <div class="text-xs text-gray-500 mt-1">36 mois</div>
+                </div>
+            </div>
+
+            <!-- Revenue Potential -->
+            <div class="bg-white rounded-lg p-6 card-shadow mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Top 15 pays par potentiel de revenus</h3>
+                <div class="chart-container">
+                    <canvas id="revenuePotential"></canvas>
+                </div>
+            </div>
+
+            <!-- ROI Analysis -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">ROI vs potentiel de revenus</h3>
+                    <div class="chart-container">
+                        <canvas id="roiAnalysis"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Investissement vs revenus attendus</h3>
+                    <div class="chart-container">
+                        <canvas id="investmentReturns"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Summary Table -->
+            <div class="bg-white rounded-lg p-6 card-shadow">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Projections dÃ©taillÃ©es - Top 10</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Pays</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Revenus potentiels</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Investissement</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">ROI</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">DÃ©lai rentabilitÃ©</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Panier moyen</th>
+                            </tr>
+                        </thead>
+                        <tbody id="financialTable" class="text-gray-700">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Roadmap d'Expansion -->
+        <div id="roadmap" class="tab-content">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Roadmap d'expansion</h2>
+                <p class="text-gray-600 mb-6">Plan d'exÃ©cution temporel 2025-2027</p>
+            </div>
+
+            <!-- Timeline Overview -->
+            <div class="bg-white rounded-lg p-6 card-shadow mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Investissements et revenus par phase</h3>
+                <div class="chart-container">
+                    <canvas id="timelineChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Phase Distribution -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Distribution des pays par phase</h3>
+                    <div class="chart-container">
+                        <canvas id="phaseDistribution"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Cumul des revenus par phase</h3>
+                    <div class="chart-container">
+                        <canvas id="cumulativeRevenue"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Timeline -->
+            <div class="bg-white rounded-lg p-6 card-shadow">
+                <h3 class="text-xl font-semibold mb-6 text-gray-800">Planning dÃ©taillÃ© d'expansion</h3>
+                <div class="space-y-6">
+                    <!-- Phase 1: Q4 2025 -->
+                    <div class="border-l-4 pl-6" style="border-color: #00168E;">
+                        <h4 class="text-lg font-semibold mb-2" style="color: #00168E;">Phase 1: Q4 2025</h4>
+                        <div class="text-sm text-gray-600 mb-3">Investissement: â‚¬8.2M â€¢ 5 pays â€¢ Focus Europe</div>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                            <div class="bg-blue-50 p-3 rounded border">
+                                <div class="font-semibold" style="color: #00168E;">France</div>
+                                <div class="text-xs text-blue-600">â‚¬12.8M potentiel</div>
+                            </div>
+                            <div class="bg-blue-50 p-3 rounded border">
+                                <div class="font-semibold" style="color: #00168E;">Canada</div>
+                                <div class="text-xs text-blue-600">â‚¬8.1M potentiel</div>
+                            </div>
+                            <div class="bg-blue-50 p-3 rounded border">
+                                <div class="font-semibold" style="color: #00168E;">Australie</div>
+                                <div class="text-xs text-blue-600">â‚¬6.5M potentiel</div>
+                            </div>
+                            <div class="bg-blue-50 p-3 rounded border">
+                                <div class="font-semibold" style="color: #00168E;">Royaume-Uni</div>
+                                <div class="text-xs text-blue-600">â‚¬6.1M potentiel</div>
+                            </div>
+                            <div class="bg-blue-50 p-3 rounded border">
+                                <div class="font-semibold" style="color: #00168E;">Allemagne</div>
+                                <div class="text-xs text-blue-600">â‚¬5.8M potentiel</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2: Q1-Q2 2026 -->
+                    <div class="border-l-4 border-green-500 pl-6">
+                        <h4 class="text-lg font-semibold text-green-700 mb-2">Phase 2: Q1-Q2 2026</h4>
+                        <div class="text-sm text-gray-600 mb-3">Investissement: â‚¬5.8M â€¢ 3 pays â€¢ Expansion Europe</div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-green-50 p-3 rounded border">
+                                <div class="font-semibold text-green-800">Italie</div>
+                                <div class="text-xs text-green-600">â‚¬3.9M potentiel</div>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded border">
+                                <div class="font-semibold text-green-800">Pays-Bas</div>
+                                <div class="text-xs text-green-600">â‚¬2.8M potentiel</div>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded border">
+                                <div class="font-semibold text-green-800">Espagne</div>
+                                <div class="text-xs text-green-600">â‚¬2.9M potentiel</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3: Q3-Q4 2026 -->
+                    <div class="border-l-4 border-yellow-500 pl-6">
+                        <h4 class="text-lg font-semibold text-yellow-700 mb-2">Phase 3: Q3-Q4 2026</h4>
+                        <div class="text-sm text-gray-600 mb-3">Investissement: â‚¬4.1M â€¢ 4 pays â€¢ Diversification</div>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <div class="bg-yellow-50 p-3 rounded border">
+                                <div class="font-semibold text-yellow-800">SuÃ¨de</div>
+                                <div class="text-xs text-yellow-600">â‚¬1.8M potentiel</div>
+                            </div>
+                            <div class="bg-yellow-50 p-3 rounded border">
+                                <div class="font-semibold text-yellow-800">NorvÃ¨ge</div>
+                                <div class="text-xs text-yellow-600">â‚¬1.5M potentiel</div>
+                            </div>
+                            <div class="bg-yellow-50 p-3 rounded border">
+                                <div class="font-semibold text-yellow-800">Belgique</div>
+                                <div class="text-xs text-yellow-600">â‚¬1.3M potentiel</div>
+                            </div>
+                            <div class="bg-yellow-50 p-3 rounded border">
+                                <div class="font-semibold text-yellow-800">Suisse</div>
+                                <div class="text-xs text-yellow-600">â‚¬1.2M potentiel</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 4: 2027 -->
+                    <div class="border-l-4 border-purple-500 pl-6">
+                        <h4 class="text-lg font-semibold text-purple-700 mb-2">Phase 4: 2027</h4>
+                        <div class="text-sm text-gray-600 mb-3">Investissement: â‚¬3.0M â€¢ 3 pays â€¢ MarchÃ©s Ã©mergents</div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-purple-50 p-3 rounded border">
+                                <div class="font-semibold text-purple-800">Danemark</div>
+                                <div class="text-xs text-purple-600">â‚¬0.9M potentiel</div>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded border">
+                                <div class="font-semibold text-purple-800">Autriche</div>
+                                <div class="text-xs text-purple-600">â‚¬0.8M potentiel</div>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded border">
+                                <div class="font-semibold text-purple-800">Finlande</div>
+                                <div class="text-xs text-purple-600">â‚¬0.7M potentiel</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommandations -->
+        <div id="recommendations" class="tab-content">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Recommandations stratÃ©giques</h2>
+                <p class="text-gray-600 mb-6">Actions concrÃ¨tes et plan d'exÃ©cution par marchÃ©</p>
+            </div>
+
+            <!-- Strategic Overview -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Modes d'entrÃ©e recommandÃ©s</h3>
+                    <div class="chart-container">
+                        <canvas id="entryModes"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">PrioritÃ©s vs investissement</h3>
+                    <div class="chart-container">
+                        <canvas id="priorityInvestment"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Recommendations -->
+            <div class="space-y-6 mb-8">
+                <div class="bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 p-6 rounded-lg" style="border-color: #00168E;">
+                    <h3 class="text-lg font-semibold mb-3" style="color: #00168E;">
+                        <i class="fas fa-star mr-2"></i>Recommandation stratÃ©gique #1
+                    </h3>
+                    <p class="font-medium mb-2" style="color: #00168E;">Focus immÃ©diat sur la France et le Canada</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>â€¢ France: MarchÃ© domestique avec â‚¬12.8M de potentiel, faible concurrence</li>
+                        <li>â€¢ Canada: Extension naturelle avec Staples, validation du modÃ¨le nord-amÃ©ricain</li>
+                        <li>â€¢ ROI combinÃ© de 285% sur 36 mois</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-r from-green-50 to-green-100 border-l-4 border-green-500 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-green-800 mb-3">
+                        <i class="fas fa-chess-knight mr-2"></i>Recommandation stratÃ©gique #2
+                    </h3>
+                    <p class="text-green-700 font-medium mb-2">StratÃ©gie diffÃ©renciÃ©e par rÃ©gion</p>
+                    <ul class="text-green-600 text-sm space-y-1">
+                        <li>â€¢ Europe: ModÃ¨le de partenariat retail + livraison Ã  domicile</li>
+                        <li>â€¢ Anglo-saxon: Extension du modÃ¨le pickup en magasin existant</li>
+                        <li>â€¢ Adaptation du panier moyen selon le PIB par habitant</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 border-l-4 border-yellow-500 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-yellow-800 mb-3">
+                        <i class="fas fa-shield-alt mr-2"></i>Recommandation stratÃ©gique #3
+                    </h3>
+                    <p class="text-yellow-700 font-medium mb-2">Ã‰viter les marchÃ©s Ã  forte concurrence Ã©tablie</p>
+                    <ul class="text-yellow-600 text-sm space-y-1">
+                        <li>â€¢ Allemagne: Retarder l'entrÃ©e, forte prÃ©sence CEWE (8,859 partenaires)</li>
+                        <li>â€¢ Japon: MarchÃ© complexe avec 22,000 points 7-Eleven concurrents</li>
+                        <li>â€¢ Focus sur les gaps concurrentiels identifiÃ©s</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Actionable Recommendations Table -->
+            <div class="bg-white rounded-lg p-6 card-shadow">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Plan d'action dÃ©taillÃ© - Top 15 pays</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Pays</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Mode d'entrÃ©e</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Timeline</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Investissement</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Actions clÃ©s</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">DurÃ©e projet</th>
+                                <th class="px-4 py-3 font-semibold text-gray-800">Prob. succÃ¨s</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recommendationsTable" class="text-gray-700">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-white py-8 mt-16 no-print" style="background-color: #00168E;">
+        <div class="container mx-auto px-6 text-center">
+            <p class="mb-2">Â© 2025 Pictarine - Analyse stratÃ©gique d'expansion internationale</p>
+            <p class="text-blue-200 text-sm">DonnÃ©es analysÃ©es: Janvier 2025 â€¢ Projections: 2025-2027</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sample data for charts with updated timeline
+        const countryData = [
+            {country: 'France', score: 4.8, marketSize: 4.5, pmf: 4.6, competition: 2.1, revenue: 12.8, investment: 2.1, roi: 295, phase: 'Q4 2025', cewe: 1265, kodak: 806, attractiveness: 4.6},
+            {country: 'Canada', score: 4.6, marketSize: 4.2, pmf: 4.8, competition: 1.8, revenue: 8.1, investment: 1.6, roi: 285, phase: 'Q4 2025', cewe: 0, kodak: 0, attractiveness: 4.5},
+            {country: 'Australia', score: 4.4, marketSize: 3.9, pmf: 4.7, competition: 1.9, revenue: 6.5, investment: 1.5, roi: 275, phase: 'Q4 2025', cewe: 0, kodak: 0, attractiveness: 4.3},
+            {country: 'United Kingdom', score: 4.2, marketSize: 4.1, pmf: 4.3, competition: 2.3, revenue: 6.1, investment: 1.4, roi: 265, phase: 'Q4 2025', cewe: 1046, kodak: 211, attractiveness: 4.2},
+            {country: 'Germany', score: 4.0, marketSize: 4.6, pmf: 4.1, competition: 3.8, revenue: 5.8, investment: 1.6, roi: 225, phase: 'Q4 2025', cewe: 8859, kodak: 1000, attractiveness: 4.3},
+            {country: 'Italy', score: 3.8, marketSize: 3.7, pmf: 4.0, competition: 2.1, revenue: 3.9, investment: 1.2, roi: 245, phase: 'Q1-Q2 2026', cewe: 84, kodak: 548, attractiveness: 3.8},
+            {country: 'Netherlands', score: 3.6, marketSize: 3.4, pmf: 4.2, competition: 2.5, revenue: 2.8, investment: 1.0, roi: 235, phase: 'Q1-Q2 2026', cewe: 966, kodak: 0, attractiveness: 3.8},
+            {country: 'Spain', score: 3.5, marketSize: 3.6, pmf: 3.8, competition: 2.2, revenue: 2.9, investment: 1.1, roi: 220, phase: 'Q1-Q2 2026', cewe: 0, kodak: 0, attractiveness: 3.7},
+            {country: 'Sweden', score: 3.4, marketSize: 3.1, pmf: 4.1, competition: 1.7, revenue: 1.8, investment: 0.8, roi: 195, phase: 'Q3-Q4 2026', cewe: 0, kodak: 0, attractiveness: 3.6},
+            {country: 'Norway', score: 3.3, marketSize: 2.9, pmf: 4.3, competition: 1.5, revenue: 1.5, investment: 0.7, roi: 185, phase: 'Q3-Q4 2026', cewe: 0, kodak: 0, attractiveness: 3.6},
+            {country: 'Belgium', score: 3.2, marketSize: 2.7, pmf: 3.9, competition: 1.6, revenue: 1.3, investment: 0.6, roi: 180, phase: 'Q3-Q4 2026', cewe: 0, kodak: 0, attractiveness: 3.3},
+            {country: 'Switzerland', score: 3.1, marketSize: 2.5, pmf: 4.2, competition: 1.4, revenue: 1.2, investment: 0.5, roi: 175, phase: 'Q3-Q4 2026', cewe: 0, kodak: 0, attractiveness: 3.3},
+            {country: 'Denmark', score: 3.0, marketSize: 2.3, pmf: 4.0, competition: 1.3, revenue: 0.9, investment: 0.4, roi: 170, phase: '2027', cewe: 0, kodak: 0, attractiveness: 3.1},
+            {country: 'Austria', score: 2.9, marketSize: 2.2, pmf: 3.8, competition: 1.2, revenue: 0.8, investment: 0.4, roi: 165, phase: '2027', cewe: 0, kodak: 0, attractiveness: 3.0},
+            {country: 'Finland', score: 2.8, marketSize: 2.0, pmf: 3.7, competition: 1.1, revenue: 0.7, investment: 0.3, roi: 160, phase: '2027', cewe: 0, kodak: 0, attractiveness: 2.8}
+        ];
+
+        const heatmapData = [
+            {country: 'France', marketSize: 4.5, pmf: 4.6, lowCompetition: 3.9, businessEnv: 4.2, global: 4.3},
+            {country: 'Canada', marketSize: 4.2, pmf: 4.8, lowCompetition: 4.2, businessEnv: 4.8, global: 4.5},
+            {country: 'Australia', marketSize: 3.9, pmf: 4.7, lowCompetition: 4.1, businessEnv: 4.6, global: 4.3},
+            {country: 'United Kingdom', marketSize: 4.1, pmf: 4.3, lowCompetition: 2.7, businessEnv: 4.5, global: 3.9},
+            {country: 'Germany', marketSize: 4.6, pmf: 4.1, lowCompetition: 1.2, businessEnv: 3.8, global: 3.4},
+            {country: 'Italy', marketSize: 3.7, pmf: 4.0, lowCompetition: 3.9, businessEnv: 3.2, global: 3.7},
+            {country: 'Netherlands', marketSize: 3.4, pmf: 4.2, lowCompetition: 2.5, businessEnv: 4.1, global: 3.6},
+            {country: 'Spain', marketSize: 3.6, pmf: 3.8, lowCompetition: 3.8, businessEnv: 3.5, global: 3.7},
+            {country: 'Sweden', marketSize: 3.1, pmf: 4.1, lowCompetition: 4.3, businessEnv: 4.7, global: 4.0},
+            {country: 'Norway', marketSize: 2.9, pmf: 4.3, lowCompetition: 4.5, businessEnv: 4.8, global: 4.1}
+        ];
+
+        // Tab switching functionality
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.borderColor = 'transparent';
+                btn.style.color = '#6b7280';
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            
+            event.target.classList.add('active');
+            event.target.style.borderColor = '#00168E';
+            event.target.style.color = '#00168E';
+        }
+
+        // Initialize charts
+        function initializeCharts() {
+            // Top 5 Chart
+            const top5Ctx = document.getElementById('top5Chart').getContext('2d');
+            new Chart(top5Ctx, {
+                type: 'bar',
+                data: {
+                    labels: countryData.slice(0, 5).map(d => d.country),
+                    datasets: [{
+                        label: 'Score stratÃ©gique',
+                        data: countryData.slice(0, 5).map(d => d.score),
+                        backgroundColor: 'rgba(0, 22, 142, 0.8)',
+                        borderColor: '#00168E',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 5
+                        }
+                    }
+                }
+            });
+
+            // Phase Distribution Chart
+            const phaseCtx = document.getElementById('phaseChart').getContext('2d');
+            new Chart(phaseCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Q4 2025', 'Q1-Q2 2026', 'Q3-Q4 2026', '2027'],
+                    datasets: [{
+                        data: [5, 3, 4, 3],
+                        backgroundColor: [
+                            '#00168E',
+                            'rgba(16, 185, 129, 0.8)',
+                            'rgba(245, 158, 11, 0.8)',
+                            'rgba(139, 92, 246, 0.8)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Priority Matrix
+            const matrixCtx = document.getElementById('priorityMatrix').getContext('2d');
+            new Chart(matrixCtx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Pays analysÃ©s',
+                        data: countryData.map(d => ({
+                            x: d.pmf,
+                            y: d.marketSize,
+                            country: d.country
+                        })),
+                        backgroundColor: 'rgba(0, 22, 142, 0.6)',
+                        borderColor: '#00168E',
+                        pointRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Product Market Fit Score'
+                            },
+                            min: 0,
+                            max: 5
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Market Size Score'
+                            },
+                            min: 0,
+                            max: 5
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.raw.country}: PMF ${context.parsed.x}, Market Size ${context.parsed.y}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Heatmap Chart
+            const heatmapCtx = document.getElementById('heatmapChart').getContext('2d');
+            new Chart(heatmapCtx, {
+                type: 'bar',
+                data: {
+                    labels: heatmapData.map(d => d.country),
+                    datasets: [
+                        {
+                            label: 'Market Size',
+                            data: heatmapData.map(d => d.marketSize),
+                            backgroundColor: '#00168E'
+                        },
+                        {
+                            label: 'PMF Score',
+                            data: heatmapData.map(d => d.pmf),
+                            backgroundColor: 'rgba(16, 185, 129, 0.8)'
+                        },
+                        {
+                            label: 'Low Competition',
+                            data: heatmapData.map(d => d.lowCompetition),
+                            backgroundColor: 'rgba(245, 158, 11, 0.8)'
+                        },
+                        {
+                            label: 'Business Env.',
+                            data: heatmapData.map(d => d.businessEnv),
+                            backgroundColor: 'rgba(139, 92, 246, 0.8)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            stacked: false
+                        },
+                        y: {
+                            beginAtZero: true,
+                            max: 5
+                        }
+                    }
+                }
+            });
+
+            // Competitive Scatter
+            const compScatterCtx = document.getElementById('competitiveScatter').getContext('2d');
+            new Chart(compScatterCtx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Pays analysÃ©s',
+                        data: countryData.map(d => ({
+                            x: d.cewe,
+                            y: d.kodak,
+                            country: d.country
+                        })),
+                        backgroundColor: 'rgba(0, 22, 142, 0.6)',
+                        borderColor: '#00168E',
+                        pointRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Partenaires CEWE'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Magasins KODAK'
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.raw.country}: CEWE ${context.parsed.x}, KODAK ${context.parsed.y}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Competition Intensity
+            const compIntensityCtx = document.getElementById('competitionIntensity').getContext('2d');
+            new Chart(compIntensityCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Faible', 'ModÃ©rÃ©e', 'Ã‰levÃ©e', 'TrÃ¨s Ã©levÃ©e'],
+                    datasets: [{
+                        data: [8, 6, 5, 6],
+                        backgroundColor: [
+                            'rgba(34, 197, 94, 0.8)',
+                            'rgba(245, 158, 11, 0.8)',
+                            'rgba(249, 115, 22, 0.8)',
+                            'rgba(239, 68, 68, 0.8)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Top Competitive Markets
+            const topCompCtx = document.getElementById('topCompetitiveMarkets').getContext('2d');
+            const topCompetitive = countryData.sort((a, b) => (b.cewe + b.kodak) - (a.cewe + a.kodak)).slice(0, 10);
+            new Chart(topCompCtx, {
+                type: 'bar',
+                data: {
+                    labels: topCompetitive.map(d => d.country),
+                    datasets: [{
+                        label: 'PrÃ©sence concurrentielle totale',
+                        data: topCompetitive.map(d => d.cewe + d.kodak),
+                        backgroundColor: 'rgba(239, 68, 68, 0.8)',
+                        borderColor: 'rgb(239, 68, 68)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Opportunity Matrix
+            const oppMatrixCtx = document.getElementById('opportunityMatrix').getContext('2d');
+            new Chart(oppMatrixCtx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Pays analysÃ©s',
+                        data: countryData.map(d => ({
+                            x: d.competition,
+                            y: d.attractiveness,
+                            country: d.country
+                        })),
+                        backgroundColor: function(context) {
+                            const point = context.raw;
+                            if (point.y > 4.0 && point.x < 2.0) return 'rgba(34, 197, 94, 0.8)'; // Zone premium
+                            if (point.y > 3.5 && point.x < 3.0) return 'rgba(245, 158, 11, 0.8)'; // Zone attention
+                            return 'rgba(239, 68, 68, 0.8)'; // Zone combat
+                        },
+                        pointRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'IntensitÃ© concurrentielle'
+                            },
+                            min: 0,
+                            max: 5
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'AttractivitÃ© du marchÃ©'
+                            },
+                            min: 0,
+                            max: 5
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.raw.country}: Competition ${context.parsed.x}, AttractivitÃ© ${context.parsed.y}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Revenue Potential Chart
+            const revenueCtx = document.getElementById('revenuePotential').getContext('2d');
+            new Chart(revenueCtx, {
+                type: 'bar',
+                data: {
+                    labels: countryData.slice(0, 15).map(d => d.country),
+                    datasets: [{
+                        label: 'Potentiel de revenus (â‚¬M)',
+                        data: countryData.slice(0, 15).map(d => d.revenue),
+                        backgroundColor: 'rgba(16, 185, 129, 0.8)',
+                        borderColor: 'rgb(16, 185, 129)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // ROI Analysis
+            const roiCtx = document.getElementById('roiAnalysis').getContext('2d');
+            new Chart(roiCtx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Pays analysÃ©s',
+                        data: countryData.map(d => ({
+                            x: d.revenue,
+                            y: d.roi,
+                            country: d.country
+                        })),
+                        backgroundColor: 'rgba(139, 92, 246, 0.6)',
+                        borderColor: 'rgb(139, 92, 246)',
+                        pointRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Potentiel de revenus (â‚¬M)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'ROI (%)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.raw.country}: â‚¬${context.parsed.x}M, ROI ${context.parsed.y}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Investment Returns
+            const investReturnCtx = document.getElementById('investmentReturns').getContext('2d');
+            new Chart(investReturnCtx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Pays analysÃ©s',
+                        data: countryData.map(d => ({
+                            x: d.investment,
+                            y: d.revenue,
+                            country: d.country
+                        })),
+                        backgroundColor: 'rgba(0, 22, 142, 0.6)',
+                        borderColor: '#00168E',
+                        pointRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Investissement requis (â‚¬M)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Revenus attendus (â‚¬M)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.raw.country}: Invest. â‚¬${context.parsed.x}M, Rev. â‚¬${context.parsed.y}M`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Timeline Chart
+            const timelineCtx = document.getElementById('timelineChart').getContext('2d');
+            new Chart(timelineCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Q4 2025', 'Q1-Q2 2026', 'Q3-Q4 2026', '2027'],
+                    datasets: [
+                        {
+                            label: 'Investissement (â‚¬M)',
+                            data: [8.2, 5.8, 4.1, 3.0],
+                            backgroundColor: '#00168E',
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Revenus potentiels (â‚¬M)',
+                            data: [39.3, 9.6, 6.8, 2.4],
+                            backgroundColor: 'rgba(16, 185, 129, 0.8)',
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Investissement (â‚¬M)'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Revenus potentiels (â‚¬M)'
+                            },
+                            grid: {
+                                drawOnChartArea: false,
+                            },
+                        }
+                    }
+                }
+            });
+
+            // Phase Distribution
+            const phaseDistCtx = document.getElementById('phaseDistribution').getContext('2d');
+            new Chart(phaseDistCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Q4 2025', 'Q1-Q2 2026', 'Q3-Q4 2026', '2027'],
+                    datasets: [{
+                        data: [5, 3, 4, 3],
+                        backgroundColor: [
+                            '#00168E',
+                            'rgba(16, 185, 129, 0.8)',
+                            'rgba(245, 158, 11, 0.8)',
+                            'rgba(139, 92, 246, 0.8)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Cumulative Revenue
+            const cumulativeCtx = document.getElementById('cumulativeRevenue').getContext('2d');
+            new Chart(cumulativeCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Q4 2025', 'Q1-Q2 2026', 'Q3-Q4 2026', '2027'],
+                    datasets: [{
+                        label: 'Revenus cumulÃ©s (â‚¬M)',
+                        data: [39.3, 48.9, 55.7, 58.1],
+                        backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                        borderColor: 'rgb(16, 185, 129)',
+                        borderWidth: 3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Revenus cumulÃ©s (â‚¬M)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Entry Modes
+            const entryModesCtx = document.getElementById('entryModes').getContext('2d');
+            new Chart(entryModesCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Partenariat direct', 'Test pilote', 'Surveillance'],
+                    datasets: [{
+                        data: [8, 5, 2],
+                        backgroundColor: [
+                            '#00168E',
+                            'rgba(16, 185, 129, 0.8)',
+                            'rgba(245, 158, 11, 0.8)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Priority Investment
+            const priorityInvestCtx = document.getElementById('priorityInvestment').getContext('2d');
+            new Chart(priorityInvestCtx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Pays analysÃ©s',
+                        data: countryData.map((d, i) => ({
+                            x: d.investment,
+                            y: 15 - i, // Priority inversÃ©e
+                            country: d.country
+                        })),
+                        backgroundColor: function(context) {
+                            const priority = context.raw.y;
+                            if (priority > 10) return '#00168E';
+                            if (priority > 5) return 'rgba(16, 185, 129, 0.8)';
+                            return 'rgba(245, 158, 11, 0.8)';
+                        },
+                        pointRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Investissement requis (â‚¬M)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'PrioritÃ© (rang inversÃ©)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.raw.country}: â‚¬${context.parsed.x}M, PrioritÃ© ${16 - context.parsed.y}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Populate tables
+        function populateTables() {
+            // Country Rankings Table
+            const rankingsBody = document.getElementById('countryRankings');
+            if (rankingsBody) {
+                rankingsBody.innerHTML = countryData.slice(0, 15).map((country, index) => `
+                    <tr class="border-t">
+                        <td class="px-4 py-3 font-semibold">${index + 1}</td>
+                        <td class="px-4 py-3">${country.country}</td>
+                        <td class="px-4 py-3 font-semibold" style="color: #00168E;">${country.score}</td>
+                        <td class="px-4 py-3">${country.marketSize}</td>
+                        <td class="px-4 py-3">${country.pmf}</td>
+                        <td class="px-4 py-3">${country.competition}</td>
+                        <td class="px-4 py-3">
+                            <span class="px-2 py-1 text-xs rounded-full ${
+                                index < 5 ? 'bg-green-100 text-green-800' : 
+                                index < 10 ? 'bg-yellow-100 text-yellow-800' : 
+                                'bg-gray-100 text-gray-800'
+                            }">
+                                ${country.phase}
+                            </span>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            // Financial Table
+            const financialBody = document.getElementById('financialTable');
+            if (financialBody) {
+                financialBody.innerHTML = countryData.slice(0, 10).map(country => `
+                    <tr class="border-t">
+                        <td class="px-4 py-3 font-semibold">${country.country}</td>
+                        <td class="px-4 py-3 text-green-600">â‚¬${country.revenue}M</td>
+                        <td class="px-4 py-3">â‚¬${country.investment}M</td>
+                        <td class="px-4 py-3 font-semibold text-purple-600">${country.roi}%</td>
+                        <td class="px-4 py-3">18 mois</td>
+                        <td class="px-4 py-3">$${(country.revenue / 4).toFixed(0)}</td>
+                    </tr>
+                `).join('');
+            }
+
+            // Recommendations Table
+            const recommendationsBody = document.getElementById('recommendationsTable');
+            if (recommendationsBody) {
+                const entryModes = ['Partenariat direct', 'Test pilote', 'Surveillance'];
+                const investments = ['Ã‰levÃ©', 'Moyen', 'Faible'];
+                const actions = [
+                    'NÃ©gociation partenaires retail majeurs',
+                    'Ã‰tude de marchÃ© approfondie',
+                    'Adaptation technologique',
+                    'Test marchÃ© limitÃ©',
+                    'Veille concurrentielle'
+                ];
+                
+                recommendationsBody.innerHTML = countryData.slice(0, 15).map((country, index) => `
+                    <tr class="border-t">
+                        <td class="px-4 py-3 font-semibold">${country.country}</td>
+                        <td class="px-4 py-3">
+                            <span class="px-2 py-1 text-xs rounded-full bg-blue-100" style="color: #00168E;">
+                                ${entryModes[index % 3]}
+                            </span>
+                        </td>
+                        <td class="px-4 py-3">${country.phase}</td>
+                        <td class="px-4 py-3">
+                            <span class="px-2 py-1 text-xs rounded-full ${
+                                country.investment > 1.5 ? 'bg-red-100 text-red-800' :
+                                country.investment > 1.0 ? 'bg-yellow-100 text-yellow-800' :
+                                'bg-green-100 text-green-800'
+                            }">
+                                ${investments[Math.min(Math.floor(country.investment / 0.7), 2)]}
+                            </span>
+                        </td>
+                        <td class="px-4 py-3 text-sm">${actions[index % 5]}</td>
+                        <td class="px-4 py-3">${12 + index} mois</td>
+                        <td class="px-4 py-3 font-semibold text-green-600">${85 + index}%</td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCharts();
+            populateTables();
+        });
+
+        // Make sure charts resize properly
+        window.addEventListener('resize', function() {
+            Chart.helpers.each(Chart.instances, function(instance) {
+                instance.resize();
+            });
+        });
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDt6wDXa71mhlFWCk9qpbnhvxD7IVg2PcavYAg%2FlTkqmYRYuXcOva8NTxzey7S9N9WNnBCk7Iti7k8q2hJWlT3DLsw6VtX6zWlpEmm%2FLcESEtUxoT8jqn2o%2Fxq3yq%2Bw6bngUrM5%2FamNcmdP4yv7a18fkJESMErbrYeS%2F0mPQK%2BxvkSTJrl2GFjcd3V1Daj9fZ%2FPUCTQ9qqqi7eTs7SWOGcw%2BqJxFJPrWuX89QD9UcJ28Gh3K1GHcrr4xXg7RRoCiHXDu%2BPUv5oGOU33X0GRX2P0IYiond1YO74OS6Bs5bao%2BAKCP5vizelFlI7ia258x6z7xlV9G3GN3ispthHq0DDJ%2FBKa4BXv8OR2HtIMOSyJrc3JjV1WMtzH047gP3UuilDmLcCII1f3%2BRDLwe1uMWEyPdmFyzDy9B9Br%2FZ%2BW4E1GD9BI19s%2BcReaNorXrt2lS78NnA006jjAOcfaJWQiQ9rkG8CZfQmIqafnd2MshetwPkOEAjl3adz4Thzmx7NS%2BM0VtaHXn7SDTF5ubEdYBpks%3D";
+        window.__genspark_locale = "fr-FR";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDt6wDXa71mhlFWCk9qpbnhvxD7IVg2PcavYAg/lTkqmYRYuXcOva8NTxzey7S9N9WNnBCk7Iti7k8q2hJWlT3DLsw6VtX6zWlpEmm/LcESEtUxoT8jqn2o/xq3yq+w6bngUrM5/amNcmdP4yv7a18fkJESMErbrYeS/0mPQK+xvkSTJrl2GFjcd3V1Daj9fZ/PUCTQ9qqqi7eTs7SWOGcw+qJxFJPrWuX89QD9UcJ28Gh3K1GHcrr4xXg7RRoCiHXDu+PUv5oGOU33X0GRX2P0IYiond1YO74OS6Bs5bao+AKCP5vizelFlI7ia258x6z7xlV9G3GN3ispthHq0DDJ/BKa4BXv8OR2HtIMOSyJrc3JjV1WMtzH047gP3UuilDmLcCII1f3+RDLwe1uMWEyPdmFyzDy9B9Br/Z+W4E1GD9BI19s+cReaNorXrt2lS78NnA006jjAOcfaJWQiQ9rkG8CZfQmIqafnd2MshetwPkOEAjl3adz4Thzmx7NS+M0VtaHXn7SDTF5ubEdYBpks=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
